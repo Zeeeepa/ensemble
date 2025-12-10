@@ -1,7 +1,7 @@
 {
   "name": "ai-mesh-pytest",
   "version": "4.0.0",
-  "description": "Pytest testing framework integration",
+  "description": "Pytest testing framework integration - Execute and generate Python tests with fixtures, parametrization, and mocking support",
   "author": {
     "name": "Fortium Partners",
     "email": "support@fortiumpartners.com",
@@ -13,11 +13,28 @@
     "pytest",
     "testing",
     "python",
-    "ai-mesh"
+    "ai-mesh",
+    "fixtures",
+    "mocking",
+    "parametrization",
+    "test-generation"
   ],
   "agents": "./agents",
   "commands": "./commands",
   "skills": "./skills",
+  "skillsMetadata": {
+    "pytest-test-framework": {
+      "name": "pytest Test Framework",
+      "version": "1.0.0",
+      "description": "Execute and generate pytest tests for Python projects",
+      "skillFile": "./skills/SKILL.md",
+      "referenceFile": "./skills/REFERENCE.md",
+      "tools": {
+        "generateTest": "./lib/generate-test.py",
+        "runTest": "./lib/run-test.py"
+      }
+    }
+  },
   "dependencies": [
     "ai-mesh-quality@4.0.0"
   ]
