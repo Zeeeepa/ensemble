@@ -152,24 +152,24 @@ describe('config-path', () => {
   });
 
   describe('getLegacyPaths', () => {
-    it('should return old ai-mesh config paths', () => {
+    it('should return old ensemble config paths', () => {
       const result = configPath.getLegacyPaths();
-      expect(result.taskProgressPane).toBe(path.join(mockHomeDir, '.ai-mesh-task-progress'));
-      expect(result.paneViewer).toBe(path.join(mockHomeDir, '.ai-mesh-pane-viewer'));
+      expect(result.taskProgressPane).toBe(path.join(mockHomeDir, '.ensemble/plugins/task-progress-pane'));
+      expect(result.paneViewer).toBe(path.join(mockHomeDir, '.ensemble/plugins/pane-viewer'));
     });
   });
 
   describe('hasLegacyConfig', () => {
     it('should return true if task-progress-pane legacy dir exists', () => {
       fs.existsSync.mockImplementation((p) => {
-        return p === path.join(mockHomeDir, '.ai-mesh-task-progress');
+        return p === path.join(mockHomeDir, '.ensemble/plugins/task-progress-pane');
       });
       expect(configPath.hasLegacyConfig()).toBe(true);
     });
 
     it('should return true if pane-viewer legacy dir exists', () => {
       fs.existsSync.mockImplementation((p) => {
-        return p === path.join(mockHomeDir, '.ai-mesh-pane-viewer');
+        return p === path.join(mockHomeDir, '.ensemble/plugins/pane-viewer');
       });
       expect(configPath.hasLegacyConfig()).toBe(true);
     });

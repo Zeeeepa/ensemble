@@ -104,14 +104,14 @@ function initializeConfigStructure() {
 }
 
 /**
- * Get the old ai-mesh config paths for migration purposes
+ * Get the old ensemble config paths for migration purposes
  * @returns {object} Object with old path locations
  */
 function getLegacyPaths() {
   const homeDir = os.homedir();
   return {
-    taskProgressPane: path.join(homeDir, '.ai-mesh-task-progress'),
-    paneViewer: path.join(homeDir, '.ai-mesh-pane-viewer'),
+    taskProgressPane: path.join(homeDir, '.ensemble/plugins/task-progress-pane'),
+    paneViewer: path.join(homeDir, '.ensemble/plugins/pane-viewer'),
   };
 }
 

@@ -68,8 +68,8 @@ function checkNodeVersion() {
 
 function checkDirectoryName() {
   const currentDir = path.basename(process.cwd());
-  if (currentDir === 'ai-mesh-plugins') {
-    log('pass', `Current directory is 'ai-mesh-plugins' - ready for rename`);
+  if (currentDir === 'ensemble-plugins') {
+    log('pass', `Current directory is 'ensemble-plugins' - ready for rename`);
     return true;
   } else if (currentDir === 'ensemble') {
     log('pass', `Directory already renamed to 'ensemble'`);
@@ -168,14 +168,14 @@ function checkBackupExists() {
   const backupDir = path.join(process.cwd(), '..');
   try {
     const files = fs.readdirSync(backupDir);
-    const backups = files.filter(f => f.startsWith('backup-ai-mesh-plugins-') && f.endsWith('.tar.gz'));
+    const backups = files.filter(f => f.startsWith('backup-ensemble-') && f.endsWith('.tar.gz'));
 
     if (backups.length > 0) {
       log('pass', `Backup found: ${backups[backups.length - 1]}`);
       return true;
     } else {
       log('fail', 'No backup archive found - create one before proceeding');
-      console.log('       Run: tar -czf ../backup-ai-mesh-plugins-$(date +%Y%m%d).tar.gz .');
+      console.log('       Run: tar -czf ../backup-ensemble-$(date +%Y%m%d).tar.gz .');
       return false;
     }
   } catch (err) {

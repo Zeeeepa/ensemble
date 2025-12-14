@@ -1,6 +1,6 @@
 /**
  * AI-Mesh Core Plugin
- * @fortium/ai-mesh-core
+ * @fortium/ensemble-core
  *
  * Core utilities including framework detection and configuration management
  */

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Automated rename script for ai-mesh → ensemble migration
+ * Automated rename script for ensemble → ensemble migration
  * Uses Node.js 22+ built-in glob (no external dependencies)
  *
  * Usage: node scripts/rename-to-ensemble.js [--dry-run]
@@ -14,33 +14,33 @@ const NEW_VERSION = '5.0.0';
 
 const REPLACEMENTS = [
   // Package names (order matters - most specific first)
-  { from: '@fortium/ai-mesh-', to: '@fortium/ensemble-' },
-  { from: '@ai-mesh/', to: '@fortium/ensemble-' },
+  { from: '@fortium/ensemble-', to: '@fortium/ensemble-' },
+  { from: '@fortium/ensemble-', to: '@fortium/ensemble-' },
 
   // Plugin names in JSON/strings
-  { from: '"ai-mesh-', to: '"ensemble-' },
-  { from: "'ai-mesh-", to: "'ensemble-" },
+  { from: '"ensemble-', to: '"ensemble-' },
+  { from: "'ensemble-", to: "'ensemble-" },
 
   // Repository URLs
-  { from: 'FortiumPartners/ai-mesh-plugins', to: 'FortiumPartners/ensemble' },
+  { from: 'FortiumPartners/ensemble', to: 'FortiumPartners/ensemble' },
 
   // Config paths (old → new consolidated structure)
-  { from: '.ai-mesh-task-progress', to: '.ensemble/plugins/task-progress-pane' },
-  { from: '.ai-mesh-pane-viewer', to: '.ensemble/plugins/pane-viewer' },
+  { from: '.ensemble/plugins/task-progress-pane', to: '.ensemble/plugins/task-progress-pane' },
+  { from: '.ensemble/plugins/pane-viewer', to: '.ensemble/plugins/pane-viewer' },
 
   // Command prefixes
-  { from: '/ai-mesh:', to: '/ensemble:' },
-  { from: '@ai-mesh-command', to: '@ensemble-command' },
+  { from: '/ensemble:', to: '/ensemble:' },
+  { from: '@ensemble-command', to: '@ensemble-command' },
 
   // Keywords in package.json
-  { from: '"ai-mesh"', to: '"ensemble"' },
+  { from: '"ensemble"', to: '"ensemble"' },
 
   // Schema patterns
-  { from: '^ai-mesh-[a-z0-9-]+$', to: '^ensemble-[a-z0-9-]+$' },
+  { from: '^ensemble-[a-z0-9-]+$', to: '^ensemble-[a-z0-9-]+$' },
 
   // Generic references
-  { from: 'ai-mesh-plugins', to: 'ensemble' },
-  { from: 'ai-mesh', to: 'ensemble' },
+  { from: 'ensemble-plugins', to: 'ensemble' },
+  { from: 'ensemble', to: 'ensemble' },
 ];
 
 const FILE_PATTERNS = [
@@ -156,9 +156,9 @@ function renamePackageDirectories() {
   const entries = fs.readdirSync(packagesDir, { withFileTypes: true });
 
   for (const entry of entries) {
-    if (entry.isDirectory() && entry.name.startsWith('ai-mesh-')) {
+    if (entry.isDirectory() && entry.name.startsWith('ensemble-')) {
       const oldPath = path.join(packagesDir, entry.name);
-      const newName = entry.name.replace('ai-mesh-', 'ensemble-');
+      const newName = entry.name.replace('ensemble-', 'ensemble-');
       const newPath = path.join(packagesDir, newName);
 
       if (DRY_RUN) {
