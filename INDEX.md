@@ -3,7 +3,7 @@
 ## Root Directory
 
 ```
-/Users/ldangelo/Development/Fortium/ensemble/
+<project-root>/ensemble/
 ```
 
 ### Configuration Files
